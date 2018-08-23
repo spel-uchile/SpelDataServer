@@ -1,0 +1,25 @@
+
+<h2> Code Analysis </h2>
+
+<div class="table row" style="height: 1em" >
+</div>
+
+<h3 *ngIf="selectedGraph"> Selected commit number {{current_index+1}} of {{graphs.length}}</h3>
+
+<div class="table row" style="height: 1em" >
+</div>
+
+<div class="table row" >
+
+  <!--<div class="col-3">-->
+    <ul class="graphs">
+      <li *ngFor="let graph of sub_graphs" (click)="onSelect(graph)" [class.selected]="graph === selectedGraph">
+        <a class="badge">{{graph.hash}}</a>
+        <!--<iframe [src]="graph.page | safe" height="700" width="700"></iframe>-->
+      </li>
+    </ul>
+</div>
+
+<app-graph-detail [graph]="selectedGraph"></app-graph-detail>
+
+

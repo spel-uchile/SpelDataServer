@@ -1,0 +1,33 @@
+<div *ngIf="graph">
+  <div class="row justify-content-md-center">
+    <div class="col-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <h2> Commit {{ graph.hash}}</h2>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hash</td>
+            <td>{{ graph.hash}}</td>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td>{{ graph.date}}</td>
+          </tr>
+          <tr>
+            <td>Link</td>
+            <td> <a href="{{this.globals.frontend_server +  '/viz_html/' + graph.file}}">{{graph.file}}</a> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!--<div><span> hash: </span>{{selectedGraph.hash}}</div>-->
+  <div>
+
+    <iframe [src]=" this.globals.frontend_server +  '/viz_html/'  + graph.file | safe" height="1000"width="1000"></iframe>
+  </div>
+</div>
