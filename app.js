@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 // var index = require('./routes/index');
 var users = require('./routes/users');
 var viz = require('./routes/viz');
+var sensor_planta = require('./routes/sensor_planta');
 var aprs_data = require('./routes/aprs_data');
 var cors = require('cors');
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/', express.static(path.join(__dirname, 'dist')));
 app.use('/viz', viz);
 app.use('/aprs_data', aprs_data);
+app.use('/sensor-planta', sensor_planta);
 
 
 // app.use('/books', express.static(path.join(__dirname, 'dist')));
