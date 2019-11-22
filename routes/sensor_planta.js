@@ -2,6 +2,7 @@ var express = require('express');
 var fs      = require('fs');
 var router  = express.Router();
 var CO2 = require('../models/co2');
+var Prs = require('../models/prs');
 //Import the mongoose module
 var mongoose = require('mongoose');
 
@@ -43,6 +44,35 @@ router.post('/', function (req, res, next) {
         });
       }
     });
+});
+
+
+router.get('/prs', function(req, res, next) {
+  Prs.find().lean().exec(function (err, data) {
+    res.json(data);
+  });
+});
+
+
+router.post('/prs', function (req, res, next) {
+  console.log(req.body);
+  let prsData= {
+    datetime: req.body.datetime,
+    temp: req.body.temp,
+    hum: req.body.hum,
+    prs: req.body.prs,
+    vbat: req.body.vbat
+  };
+  //
+  Prs.create(prsData, function (error, pr) {
+    if (error) {
+      return next(error);
+    } else {
+      return res.json({
+        status: 'created'
+      });
+    }
+  });
 });
 
 
